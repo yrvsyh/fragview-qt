@@ -112,7 +112,7 @@ public:
             close(fd);
             return;
         }
-        int size = buf.st_size;
+        size_t size = buf.st_size;
 
         char fiemap_buffer[16 * 1024];
         struct fiemap *fiemap = (struct fiemap *)fiemap_buffer;
