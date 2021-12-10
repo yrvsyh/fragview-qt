@@ -53,8 +53,8 @@ private:
 
     bool zoomEnabled;
 
-    static constexpr int blockSize = 10;
-    static constexpr int blockSpace = 1;
+    static constexpr int blockSize = 8;
+    static constexpr int blockSpace = 0;
 };
 
 #endif // BLOCKAREA_H

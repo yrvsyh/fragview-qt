@@ -68,7 +68,7 @@ void BlockArea::paintEvent(QPaintEvent *) {
             if (count == 0) {
                 p.setBrush(Qt::GlobalColor::white);
             } else {
-                p.setBrush(Qt::GlobalColor::green);
+                p.setBrush(Qt::GlobalColor::darkCyan);
             }
             if (selectedFile) {
                 std::size_t start = index * scale;
@@ -84,7 +84,7 @@ void BlockArea::paintEvent(QPaintEvent *) {
 
             p.drawRect(QRect(pos, size));
 
-            if (index++ >= blockCount) {
+            if (++index >= blockCount) {
                 return;
             }
         }
@@ -150,8 +150,8 @@ void BlockArea::onStatusBarChanged(int value)
 }
 
 void BlockArea::updateParams(QSize size) {
-    xNum = (size.width() - blockSpace) / (blockSize + blockSpace);
-    yNum = (size.height() - blockSpace) / (blockSize + blockSpace);
+    xNum = (size.width() - 2 * blockSpace) / (blockSize + blockSpace);
+    yNum = (size.height() - 2 * blockSpace) / (blockSize + blockSpace);
     yMax = blockCount / xNum;
 
     verticalScrollBar()->setRange(0, yMax - yNum + 1);
