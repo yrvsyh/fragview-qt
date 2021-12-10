@@ -29,6 +29,7 @@ void BlockArea::setScale(int s) {
     blockCount = physicalBlockCount / scale;
 
     updateParams(viewport()->size());
+    viewport()->repaint();
 }
 
 void BlockArea::scan(QString path) { ExtentInfo::scan(path.toStdString()); }
@@ -38,7 +39,6 @@ void BlockArea::setSelectedFile(QString path) {
         delete selectedFile;
     }
     selectedFile = new FileNode(getFileInfoByPath(path.toStdString()));
-
     viewport()->update();
 }
 
@@ -47,8 +47,6 @@ void BlockArea::unsetSelectedFile() {
         delete selectedFile;
         selectedFile = nullptr;
     }
-
-    viewport()->update();
 }
 
 void BlockArea::paintEvent(QPaintEvent *) {
@@ -155,6 +153,4 @@ void BlockArea::updateParams(QSize size) {
     yMax = blockCount / xNum;
 
     verticalScrollBar()->setRange(0, yMax - yNum + 1);
-
-    viewport()->update();
 }

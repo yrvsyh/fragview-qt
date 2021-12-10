@@ -49,9 +49,9 @@ void MainWindow::setupSignal() {
             auto path = dialog->selectedFiles()[0];
 
             std::size_t count = getFilesystemBlockCount(path.toStdString().c_str());
+            ui->blockArea->scan(path);
             ui->blockArea->setPhysicalBlockCount(count);
             ui->blockArea->setScale(1024);
-            ui->blockArea->scan(path);
         }
     });
 
