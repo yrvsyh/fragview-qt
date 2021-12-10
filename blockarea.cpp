@@ -148,8 +148,8 @@ void BlockArea::onStatusBarChanged(int value)
 }
 
 void BlockArea::updateParams(QSize size) {
-    xNum = (size.width() - 2 * blockSpace) / (blockSize + blockSpace);
-    yNum = (size.height() - 2 * blockSpace) / (blockSize + blockSpace);
+    xNum = (size.width() - 2 * blockSpace - 1) / (blockSize + blockSpace);
+    yNum = (size.height() - 2 * blockSpace - 1) / (blockSize + blockSpace);
     yMax = blockCount / xNum;
 
     verticalScrollBar()->setRange(0, yMax - yNum + 1);

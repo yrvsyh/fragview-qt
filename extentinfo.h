@@ -45,6 +45,9 @@ public:
             return 0;
         }
         if (right == extents.end()) {
+            if (left->end > start) {
+                return 1;
+            }
             return std::distance(left, --extents.end());
         }
         if (left == right && (*left).start < end) {
