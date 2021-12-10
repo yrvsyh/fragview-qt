@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupUi() {
     ui->tableWidget->verticalHeader()->hide();
-    ui->tableWidget->setSortingEnabled(true);
+    //    ui->tableWidget->setSortingEnabled(true);
     ui->tableWidget->setColumnCount(3);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << tr("碎片数") << tr("文件大小") << tr("文件路径"));
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
@@ -107,9 +107,8 @@ void MainWindow::fillTable(std::vector<ExtentInfo::FileNode> &fileList) {
     for (std::size_t i = 0; i < fileList.size(); i++) {
         auto &file = fileList[i];
         ui->tableWidget->setItem(i, 0, new QTableWidgetItem(QString::number(file.extCnt)));
-        QLocale locale = this->locale();
-        QString valueText = locale.formattedDataSize(file.size);
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(valueText));
+        QString formattedSize = this->locale().formattedDataSize(file.size);
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(formattedSize));
         ui->tableWidget->setItem(i, 2, new QTableWidgetItem(QString(file.path.c_str())));
     }
 }
